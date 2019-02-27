@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
-import TableQuestions from './ListQuestions'
+import TableQuestions from './TableQuestions'
 import SearchForm from './SearchForm'
 import Pages from './Pages'
 import axios from 'axios'
@@ -38,7 +38,7 @@ class App extends Component {
             <div className='App'>
                 <header className="Header">
                     <SearchForm search={this.requestToService}/>
-                    {this.state.page && <TableQuestions className='table' questions={this.state.page.items}/>}
+                    {this.state.page && <TableQuestions className='table' questions={this.state.page.questions}/>}
                     {this.state.page && <Pages hasElse={this.state.page.hasMore}
                                                currencyPage={this.state.loadedPage}
                                                title={this.state.title} search={this.requestToService}/>}

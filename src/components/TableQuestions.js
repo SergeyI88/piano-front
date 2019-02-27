@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../index.css';
 
-class ListQuestions extends Component {
+class TableQuestions extends Component {
 
     createTable = (questions) => {
         let table = [];
@@ -9,9 +9,9 @@ class ListQuestions extends Component {
         for (let it of questions) {
             let children = [];
             children.push(<td>{it.title}</td>);
-            children.push(<td>{new Date(it.lastActivityDate).toTimeString()}</td>);
+            children.push(<td>{new Date(it.creationDate * 1000).toISOString()}</td>);
             children.push(<td><a href={'https://stackoverflow.com/questions/' + it.questionId}>{it.questionId}</a> </td>);
-            if (it.isAnswered) {
+            if (it.answered) {
                 table.push(<tr className='hasAnswered'>{children}</tr>)
             } else {
                 table.push(<tr className='hasntAnswered'>{children}</tr>)
@@ -37,4 +37,4 @@ class ListQuestions extends Component {
     }
 }
 
-export default ListQuestions;
+export default TableQuestions;
